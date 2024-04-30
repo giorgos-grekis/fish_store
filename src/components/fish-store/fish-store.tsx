@@ -1,10 +1,11 @@
+import Title from "./title/title";
+
 const FishStore = () => {
   return (
-    <div className="">
+    <div className={`col out-border`}>
       {/* Products List */}
       <div className="">
-        <h1>FISH STORE</h1>
-        <h4>OUR PRODUCTS LIST</h4>
+        <Title />
         <div className="">
           <div className="">
             <h5 className="">PACIFIC HALIBUT</h5>
@@ -15,6 +16,7 @@ const FishStore = () => {
             <button className="">ADD TO CART</button>
           </div>
         </div>
+
         <div className="">
           <div className="">
             <h5 className="">LOBSTER</h5>

@@ -1,0 +1,54 @@
+$pseudoBgColor: #000;
+
+.header {
+  text-align: center;
+}
+
+.title {
+  font-size: 14.4rem;
+  line-height: 0.7;
+  font-weight: 400;
+  margin: 0;
+}
+
+.subtitle {
+  margin: 0;
+  font-size: 2rem;
+  color: #f5a623;
+  position: relative;
+  display: inline-block;
+  font-weight: 400;
+
+  span {
+    background: #fff;
+    position: relative;
+    z-index: 2;
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+
+  &::before {
+    content: "";
+    position: absolute;
+    top: 35%;
+    display: block;
+    z-index: 1;
+    background: $pseudoBgColor;
+    width: 130%;
+    height: 1px;
+    margin-left: -15%;
+  }
+
+  &::after {
+    content: "";
+    position: absolute;
+    bottom: 35%;
+    // transform: (-250%);
+    display: block;
+    z-index: 1;
+    background: $pseudoBgColor;
+    width: 130%;
+    height: 1px;
+    margin-left: -15%;
+  }
+}
