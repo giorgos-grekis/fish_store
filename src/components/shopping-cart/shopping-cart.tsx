@@ -2,7 +2,7 @@ import styles from "./shopping-cart.module.scss";
 
 const ShoppingCart = () => {
   return (
-    <div className="col inner-border">
+    <section className="col inner-border">
       {/* Shopping Cart */}
       <div className="">
         <h3 className={`${styles.title}`}>SHOPPING CART</h3>
@@ -40,7 +40,7 @@ const ShoppingCart = () => {
           <h5>Total: $17.24</h5>
         </div>
       </div>
-    </div>
+    </section>
   );
 };
 

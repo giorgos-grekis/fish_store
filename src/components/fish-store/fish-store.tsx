@@ -4,7 +4,7 @@ import Title from "./title/title";
 
 const FishStore = () => {
   return (
-    <div className={`col out-border`}>
+    <section className={`col out-border`}>
       {/* Products List */}
       <div className="">
         <Title />
@@ -13,7 +13,7 @@ const FishStore = () => {
           <Card key={fish.id} fish={fish} />
         ))}
       </div>
-    </div>
+    </section>
   );
 };
 

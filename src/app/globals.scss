@@ -1,7 +1,7 @@
 /*************************    CUSTOMIZE BOOTSTRAP    ********************************/
 
 // @import 'styles/customise_bootstrap.scss';
-@import "../styles/customise_bootstrap.scss";
+// @import "../styles/customise_bootstrap.scss";
 
 /*************************    CUSTOMIZE BOOTSTRAP    ********************************/
 
@@ -11,7 +11,7 @@
 
 /*************************     CUSTOM CSS    ********************************/
 
-@import "../styles/customise_global.scss";
+// @import "../styles/customise_global.scss";
 
 /*************************     CUSTOM CSS    ********************************/
 
@@ -35,9 +35,32 @@ body {
   font-size: 2rem;
 }
 
+.sr-only {
+  border: 0 !important;
+  clip: rect(1px, 1px, 1px, 1px) !important; /* 1 */
+  -webkit-clip-path: inset(50%) !important;
+  clip-path: inset(50%) !important; /* 2 */
+  height: 1px !important;
+  margin: -1px !important;
+  overflow: hidden !important;
+  padding: 0 !important;
+  position: absolute !important;
+  width: 1px !important;
+  white-space: nowrap !important; /* 3 */
+}
+
 a {
   color: inherit;
   text-decoration: none;
+}
+
+input,
+textarea {
+  all: unset;
+}
+
+input[type="file"] {
+  display: none;
 }
 
 ul {
@@ -113,12 +136,5 @@ ul {
   &.inner-border {
     border-top: 1rem double #1a1a1a;
     border-bottom: 1rem double #1a1a1a;
-    // border: 1rem double #1a1a1a;
-    // border-right-color: rgb(26, 26, 26);
-    // border-right-style: double;
-    // border-right-width: 1rem;
-    // border-left-color: rgb(26, 26, 26);
-    // border-left-style: double;
-    // border-left-width: 1rem;
   }
 }

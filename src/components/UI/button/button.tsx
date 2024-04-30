@@ -2,12 +2,13 @@ import styles from "./button.module.scss";
 
 interface ButtonType extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   content: string;
+  className?: string;
 }
 //  HTMLButtonElement
 
-const Button = ({ content, type = "button" }: ButtonType) => {
+const Button = ({ content, className, type = "button" }: ButtonType) => {
   return (
-    <button className={`${styles.btn}`} type={type}>
+    <button className={`${styles.btn} ${className}`} type={type}>
       <>{content}</>
     </button>
   );
