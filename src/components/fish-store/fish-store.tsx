@@ -1,3 +1,5 @@
+import { fishes } from "@/utils/mockup-data";
+import Card from "./card/card";
 import Title from "./title/title";
 
 const FishStore = () => {
@@ -6,37 +8,10 @@ const FishStore = () => {
       {/* Products List */}
       <div className="">
         <Title />
-        <div className="">
-          <div className="">
-            <h5 className="">PACIFIC HALIBUT</h5>
-            <p className="">
-              $17.24 - Everyone’s favorite white fish. We will cut it to the
-              size you need and ship it.
-            </p>
-            <button className="">ADD TO CART</button>
-          </div>
-        </div>
 
-        <div className="">
-          <div className="">
-            <h5 className="">LOBSTER</h5>
-            <p className="">
-              $32.00 - These tender, mouth-watering beauties are a fantastic hit
-              at any dinner party.
-            </p>
-            <button className="">ADD TO CART</button>
-          </div>
-        </div>
-        <div className="">
-          <div className="">
-            <h5 className="">SEA SCALLOPS</h5>
-            <p className="">
-              $16.84 - Big, sweet and tender. True dry-pack scallops from the
-              icy waters of Alaska.
-            </p>
-            <button className="">UNAVAILABLE</button>
-          </div>
-        </div>
+        {fishes.map((fish) => (
+          <Card key={fish.id} fish={fish} />
+        ))}
       </div>
     </div>
   );
