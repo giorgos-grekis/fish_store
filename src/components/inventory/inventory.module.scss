@@ -15,15 +15,14 @@
 }
 
 .fish {
-  // display: flex;
+  display: flex;
 
-  display: grid;
-
-  grid-template-columns: 1fr 1fr 1fr;
-  grid-template-rows: 1fr;
-  grid-template-areas: "name price availability";
+  // display: grid;
+  // grid-template-columns: 1fr 1fr 1fr;
+  // grid-template-rows: 1fr;
+  // grid-template-areas: "name price availability";
   div {
-    // flex: 1;
+    flex: 1;
     padding: 1rem;
   }
 }
@@ -50,10 +49,19 @@
 
 .fileUpload {
   color: #797676;
-  display: inline-block;
+  display: block;
   cursor: pointer;
 }
 
 .btn {
   width: 100%;
+}
+
+.select {
+  border: none;
+  background-color: white;
+  &:focus-within {
+    border: none;
+    outline: none;
+  }
 }

@@ -9,6 +9,7 @@ const InventoryCart = ({ fish }: { fish: FishType }) => {
         <div className={`${styles.innerFish}`}>{fish.price}</div>
         <div>{fish.status}</div>
       </div>
+
       <div className={`${styles.description}`}>{fish.desc}</div>
 
       <div className={`${styles.image}`}>{fish.image}</div>

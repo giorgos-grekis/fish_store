@@ -14,7 +14,7 @@ export type FishType = {
 
 const Card = ({ fish }: { fish: FishType }) => {
   const price = formatedPrice(fish.price);
-  console.log("fish: ", fish);
+
   const isUnavailable = fish.status === "unavailable";
 
   return (
@@ -27,14 +27,14 @@ const Card = ({ fish }: { fish: FishType }) => {
         <Image
           src={fish.image}
           alt={fish.name}
-          width={160}
-          height={120}
+          width={140}
+          height={100}
           style={{ objectFit: "cover" }}
         />
       </div>
       <div className="">
         <div className={`${styles.titleContainer}`}>
-          <h5 className={`${styles.title}`}>{fish.name}</h5>
+          <h3 className={`${styles.title}`}>{fish.name}</h3>
           <div className={`${styles.price}`}>${price}</div>
         </div>
         <p className={`${styles.description}`}>{fish.desc}</p>

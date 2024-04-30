@@ -1,20 +1,3 @@
-/*************************    CUSTOMIZE BOOTSTRAP    ********************************/
-
-// @import 'styles/customise_bootstrap.scss';
-// @import "../styles/customise_bootstrap.scss";
-
-/*************************    CUSTOMIZE BOOTSTRAP    ********************************/
-
-/*************************     ADD BOOTSTRAP    ********************************/
-
-// @import "~bootstrap/scss/bootstrap.scss";
-
-/*************************     CUSTOM CSS    ********************************/
-
-// @import "../styles/customise_global.scss";
-
-/*************************     CUSTOM CSS    ********************************/
-
 :root {
   --color-black: #1a1a1a;
 }
@@ -27,12 +10,17 @@
 
 html,
 body {
-  font-size: 62.5%;
+  font-size: 50%;
+
+  @media (min-width: 991px) {
+    font-size: 62.5%;
+  }
 }
 
 body {
   color: var(--color-black);
   font-size: 2rem;
+  padding: 2rem;
 }
 
 .sr-only {
@@ -99,25 +87,41 @@ ul {
 }
 
 .grid-container {
-  // color: white;
-  display: grid;
-  margin-top: 5vh;
-  margin-bottom: 5vh;
-  grid-template-columns: 4fr 2fr 4fr;
-  grid-template-rows: 90vh;
-  grid-template-areas:
-    "logo menu search icons"
-    "logo menu search icons"
-    "logo menu search icons";
+  display: flex;
+  flex-direction: column;
+
+  @media (min-width: 1450px) {
+    margin-top: 2vh;
+    height: 90vh;
+    margin-bottom: 2vh;
+    flex-direction: row;
+    > :nth-child(even) {
+      flex: 2;
+    }
+    > :nth-child(odd) {
+      flex: 4;
+    }
+  }
+
+  // display: grid;
+  // margin-top: 5vh;
+  // margin-bottom: 5vh;
+  // grid-template-columns: 4fr 2fr 4fr;
+  // grid-template-rows: 90vh;
+  // grid-template-areas:
+  //   "menu shopping inventory"
+  //   "menu shopping inventory"
+  //   "menu shopping inventory";
   //   gap: 0rem 1rem;
 
   // @media (max-width: 991.5px) {
   //   display: grid;
-  //   grid-template-columns: repeat(4, 1fr);
-  //   grid-template-rows: 1fr 1fr;
+  //   grid-template-columns: 1fr;
+  //   grid-template-rows: 1fr;
   //   grid-template-areas:
-  //     "logo logo logo icons"
-  //     "menu search search search";
+  //     "menu menu menu"
+  //     "shopping shopping shopping"
+  //     "inventory inventory inventory";
   // }
 }
 
@@ -128,6 +132,8 @@ ul {
   transition: all 0.3s;
   box-shadow: 0 5px 5px rgba(0, 0, 0, 0.1);
   overflow: scroll;
+
+  height: 100%;
 
   &.out-border {
     border: 1rem double #1a1a1a;

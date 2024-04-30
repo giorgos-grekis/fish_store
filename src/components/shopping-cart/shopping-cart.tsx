@@ -37,7 +37,7 @@ const ShoppingCart = () => {
         </ul>
 
         <div className={`${styles.totals}`}>
-          <h5>Total: $17.24</h5>
+          <h4>Total: $17.24</h4>
         </div>
       </div>
     </section>
