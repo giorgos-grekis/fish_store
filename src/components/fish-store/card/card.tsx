@@ -1,3 +1,4 @@
+"use server";
 import Image from "next/image";
 import styles from "./card.module.scss";
 import { formatedPrice } from "@/utils/helpers";
@@ -38,7 +39,7 @@ const Card = ({ fish }: { fish: FishType }) => {
           <div className={`${styles.price}`}>${price}</div>
         </div>
         <p className={`${styles.description}`}>{fish.desc}</p>
-        {!isUnavailable && <Button content="ADD TO CART" />}
+        {!isUnavailable && <Button fish={fish} content="ADD TO CART" />}
         {isUnavailable && (
           <>
             <div className={`${styles.unavailable}`}>
