@@ -27,5 +27,5 @@ export async function POST(request: NextRequest) {
   );
 
   await writeFile(pathname, buffer);
-  return NextResponse.json({ success: true });
+  return NextResponse.json({ success: true, imagePath: pathname });
 }
