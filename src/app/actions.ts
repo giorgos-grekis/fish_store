@@ -31,7 +31,3 @@ export const addNewFish = async (data: FormData) => {
 
   return formData;
 };
-
-export const uploadImage = async (image) => {
-  console.log("image: ", image);
-};

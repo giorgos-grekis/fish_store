@@ -1,35 +1,39 @@
 "use client";
-import { FishType } from "@/components/fish-store/card/card";
 import styles from "./button.module.scss";
-import { json } from "stream/consumers";
+import { useFishesContext } from "@/providers/context-provider";
+
+import type { CartItemType } from "@/providers/context-provider";
 
 interface ButtonType extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   content: string;
   className?: string;
-  fish?: FishType;
+  fish?: CartItemType;
 }
-//  HTMLButtonElement
 
 const Button = ({ fish, content, className, type = "button" }: ButtonType) => {
-  console.log("fish button: ", fish);
+  const { cartItems, setCartItems } = useFishesContext();
 
   const handleOnClick = () => {
     if (type !== "button" && !fish) return;
 
-    const fishStoreCart = localStorage.getItem("fish_store_cart");
-    if (!fishStoreCart) {
-      localStorage.setItem("fish_store_cart", JSON.stringify([fish]));
-      return;
-    }
+    setCartItems((prevValues: CartItemType[]) => {
+      const findItem = prevValues?.find((item) => item.id === fish?.id);
+      const filterItems = prevValues?.filter((item) => item.id !== fish?.id);
 
-    const fishStoreCartAdd = JSON.parse(
-      localStorage.getItem("fish_store_cart") ?? ""
-    );
-    fishStoreCartAdd.push(fish);
+      if (findItem && filterItems.length > 0) {
+        console.log("state 1 : ", { filterItems, findItem, cartItems });
+        return [...filterItems, { ...findItem, qty: findItem.qty++ }];
+      } else if (findItem && filterItems.length === 0) {
+        console.log("state 2 : ", { filterItems, findItem, cartItems });
 
-    localStorage.setItem("fish_store_cart", JSON.stringify(fishStoreCartAdd));
-
-    console.log("fishStoreCart test: ", fishStoreCartAdd);
+        return [{ ...findItem, qty: findItem.qty++ }];
+      } else if (!findItem && filterItems?.length > 0) {
+        console.log("state 3 : ", { filterItems, findItem, cartItems });
+        return [...filterItems, fish];
+      } else {
+        return [fish];
+      }
+    });
   };
 
   return (

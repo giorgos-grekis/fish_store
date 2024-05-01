@@ -1,27 +1,31 @@
 "use client";
-
 import { useForm } from "react-hook-form";
-// import { addNewFish } from "@/app/actions";
+import { useFishesContext } from "@/providers/context-provider";
 import Button from "../UI/button/button";
-import styles from "./inventory.module.scss";
-import type { SubmitHandler } from "react-hook-form";
 import { v4 as uuidv4 } from "uuid";
+import styles from "./inventory.module.scss";
 
-type FishType = {
+import type { SubmitHandler } from "react-hook-form";
+import type { FishType } from "../fish-store/card/card";
+
+export type FishTypeWithImageFile = {
   name: string;
   image: Array<File> | string;
   desc: string;
   price: number;
   status: "available" | "unavailable";
-  id: string;
+  id?: string | number;
 };
 
 const InventoryAdd = () => {
   const {
     register,
     handleSubmit,
+    reset,
     formState: { errors },
   } = useForm<FishType>();
+
+  const { fishes, setFishes } = useFishesContext();
 
   const onSubmit: SubmitHandler<FishType> = async (data) => {
     const formData = new FormData();
@@ -53,6 +57,24 @@ const InventoryAdd = () => {
       const [_, imagePath] = resJson.imagePath.split("/public/");
 
       data["image"] = `/${imagePath}`;
+
+      setFishes((prevValues: FishType[]) => [...prevValues, { ...data }]);
+
+      const fishStoreCart = localStorage.getItem("fish_store_cart");
+      if (!fishStoreCart) {
+        localStorage.setItem(
+          "fish_store_cart",
+          JSON.stringify([...fishes, data])
+        );
+        return;
+      }
+      const fishStoreCartAdd = JSON.parse(
+        localStorage.getItem("fish_store_cart") ?? ""
+      );
+      fishStoreCartAdd.push(data);
+      localStorage.setItem("fish_store_cart", JSON.stringify(fishStoreCartAdd));
+
+      reset();
     } catch (error) {
       console.error(error);
     }
@@ -61,7 +83,6 @@ const InventoryAdd = () => {
   return (
     <>
       <h3 className={`${styles.title}`}>ADD A NEW FISH</h3>
-      {/* action={addNewFish} */}
 
       <form className={`${styles.container}`} onSubmit={handleSubmit(onSubmit)}>
         <div className={`${styles.fish}`}>

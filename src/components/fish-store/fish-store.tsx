@@ -1,6 +1,5 @@
-import { fishes } from "@/utils/mockup-data";
-import Card from "./card/card";
 import Title from "./title/title";
+import FishCardContainer from "./fish-card-container";
 
 const FishStore = () => {
   return (
@@ -9,9 +8,7 @@ const FishStore = () => {
       <div className="">
         <Title />
 
-        {fishes.map((fish) => (
-          <Card key={fish.id} fish={fish} />
-        ))}
+        <FishCardContainer />
       </div>
     </section>
   );

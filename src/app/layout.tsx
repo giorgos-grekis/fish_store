@@ -2,6 +2,7 @@ import localFont from "next/font/local";
 import "./globals.scss";
 import type { PropsWithChildren } from "react";
 import type { Metadata } from "next";
+import ContextProvider from "@/providers/context-provider";
 
 const blanchCaps = localFont({
   src: "fonts/blanch_caps_inline-webfont.woff",
@@ -27,7 +28,9 @@ export default function RootLayout({ children }: PropsWithChildren) {
       lang="en"
       className={`${blanchCaps.variable} ${haymakerWebfont.variable}`}
     >
-      <body>{children}</body>
+      <body>
+        <ContextProvider>{children}</ContextProvider>
+      </body>
     </html>
   );
 }

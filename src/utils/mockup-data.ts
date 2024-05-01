@@ -1,4 +1,5 @@
 import type { FishType } from "@/components/fish-store/card/card";
+import { CartItemType } from "@/providers/context-provider";
 
 export const fishes: FishType[] = [
   {
@@ -7,7 +8,7 @@ export const fishes: FishType[] = [
     desc: "Everyone’s favorite white fish. We will cut it to the size you need and ship it.",
     price: 1724,
     status: "available",
-    id: 1,
+    id: "1",
   },
 
   {
@@ -16,7 +17,7 @@ export const fishes: FishType[] = [
     desc: "These tender, mouth-watering beauties are a fantastic hit at any dinner party.",
     price: 3200,
     status: "available",
-    id: 2,
+    id: "2",
   },
 
   {
@@ -25,7 +26,7 @@ export const fishes: FishType[] = [
     desc: "Big, sweet and tender. True dry-pack scallops from the icey waters of Alaska. About 8-10 per pound",
     price: 1684,
     status: "unavailable",
-    id: 3,
+    id: "3",
   },
 
   {
@@ -34,6 +35,18 @@ export const fishes: FishType[] = [
     desc: "Lean flesh with a mild, sweet flavor profile, moderately firm texture and large, moist flakes. ",
     price: 1129,
     status: "available",
-    id: 4,
+    id: "4",
+  },
+];
+
+export const cartItemsFishes: CartItemType[] = [
+  {
+    name: "Pacific Halibut",
+    image: "/images/hali.jpg",
+    desc: "Everyone’s favorite white fish. We will cut it to the size you need and ship it.",
+    price: 1724,
+    status: "available",
+    id: "1",
+    qty: 1,
   },
 ];

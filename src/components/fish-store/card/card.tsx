@@ -1,8 +1,8 @@
-"use server";
 import Image from "next/image";
 import styles from "./card.module.scss";
 import { formatedPrice } from "@/utils/helpers";
 import Button from "@/components/UI/button/button";
+import { CartItemType } from "@/providers/context-provider";
 
 export type FishType = {
   name: string;
@@ -10,11 +10,16 @@ export type FishType = {
   desc: string;
   price: number;
   status: "available" | "unavailable";
-  id: number;
+  id: string;
 };
 
-const Card = ({ fish }: { fish: FishType }) => {
+const Card = ({ fish }: { fish: CartItemType }) => {
   const price = formatedPrice(fish.price);
+
+  const fishWithQty = {
+    ...fish,
+    qty: 1,
+  };
 
   const isUnavailable = fish.status === "unavailable";
 
@@ -33,13 +38,13 @@ const Card = ({ fish }: { fish: FishType }) => {
           style={{ objectFit: "cover" }}
         />
       </div>
-      <div className="">
+      <div className={styles.flexOne}>
         <div className={`${styles.titleContainer}`}>
           <h3 className={`${styles.title}`}>{fish.name}</h3>
           <div className={`${styles.price}`}>${price}</div>
         </div>
         <p className={`${styles.description}`}>{fish.desc}</p>
-        {!isUnavailable && <Button fish={fish} content="ADD TO CART" />}
+        {!isUnavailable && <Button fish={fishWithQty} content="ADD TO CART" />}
         {isUnavailable && (
           <>
             <div className={`${styles.unavailable}`}>
