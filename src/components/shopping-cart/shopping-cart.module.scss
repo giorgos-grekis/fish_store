@@ -39,3 +39,9 @@ $borderBottomBold: 3px solid var(--color-black);
   padding: $padding;
   border-bottom: $borderBottomBold;
 }
+
+.emptyMessage {
+  font-family: sans-serif;
+  text-align: center;
+  font-size: 1.5rem;
+}
